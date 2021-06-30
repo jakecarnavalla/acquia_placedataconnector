@@ -1,0 +1,171 @@
+{
+  "$id": "acquia_placeconnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v1",
+  "displayName": "Acquia Place Connector",
+  "entityType": "yext/location",
+  "source": {
+    "sourceConfig": {
+      "apiPullConfig": {
+        "requestType": "GET",
+        "url": "${{acquiaDomain}}/jsonapi/node/place",
+        "paginationControl": {
+          "cursorPagination": {
+            "cursor": "links/next",
+            "cursorType": "FULL_URL",
+            "detectCursorInHeader": false
+          }
+        },
+        "headers": {
+          "Accept": "application/vnd.api+json",
+          "Content-Type": "application/vnd.api+json"
+        },
+        "queryParams": {
+          "per_page": "50"
+        },
+        "dataFormat": "JSON"
+      }
+    },
+    "baseSelector": {
+      "type": "JSON",
+      "header": "data",
+      "path": "data"
+    },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "ID",
+        "path": "id"
+      },
+      {
+        "type": "JSON",
+        "header": "Name",
+        "path": "attributes.title"
+      },
+      {
+        "type": "JSON",
+        "header": "Description",
+        "path": "attributes.body.value"
+      },
+      {
+        "type": "JSON",
+        "header": "Address Line 1",
+        "path": "attributes.field_place_address.address_line1"
+      },
+      {
+        "type": "JSON",
+        "header": "Address Line 2",
+        "path": "attributes.field_place_address.address_line2"
+      },
+      {
+        "type": "JSON",
+        "header": "Sublocality",
+        "path": "attributes.field_place_address.dependent_locality"
+      },
+      {
+        "type": "JSON",
+        "header": "Locality",
+        "path": "attributes.field_place_address.locality"
+      },
+      {
+        "type": "JSON",
+        "header": "Administative Area",
+        "path": "attributes.field_place_address.administrative_area"
+      },
+      {
+        "type": "JSON",
+        "header": "Country Code",
+        "path": "attributes.field_place_address.country_code"
+      },
+      {
+        "type": "JSON",
+        "header": "Country Code",
+        "path": "attributes.field_place_address.country_code"
+      },
+      {
+        "type": "JSON",
+        "header": "Language Code",
+        "path": "attributes.field_place_address.langcode"
+      },
+      {
+        "type": "JSON",
+        "header": "Phone Number",
+        "path": "attributes.field_place_telephone"
+      },
+      {
+        "type": "JSON",
+        "header": "Geolocation",
+        "path": "attributes.field_geofield"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "field": "yext/entityId",
+      "header": "ID",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/name",
+      "header": "Name",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/description",
+      "header": "Description",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/addressLine1",
+      "header": "Address Line 1",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/addressLine2",
+      "header": "Address Line 2",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/sublocality",
+      "header": "Sublocality",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/locality",
+      "header": "Locality",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/region",
+      "header": "Administative Area",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/country",
+      "header": "Country Code",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/language",
+      "header": "Language Code",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/mainPhone",
+      "header": "Phone Number",
+      "subfieldPath": []
+    },
+    {
+      "field": "yext/latlong",
+      "header": "Geolocation",
+      "subfieldPath": []
+    }
+  ],
+  "scheduleConfig": {
+     "customSchedule": {
+          "timeZone": "America/New_York",
+          "startDate": "2021-06-23",
+          "startTime": "03:00",
+          "frequencyType": "DAILY"
+     }
+  }
+}
