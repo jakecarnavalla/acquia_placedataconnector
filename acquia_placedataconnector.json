@@ -78,11 +78,6 @@
       },
       {
         "type": "JSON",
-        "header": "Country Code",
-        "path": "attributes.field_place_address.country_code"
-      },
-      {
-        "type": "JSON",
         "header": "Language Code",
         "path": "attributes.field_place_address.langcode"
       },
@@ -93,12 +88,22 @@
       },
       {
         "type": "JSON",
-        "header": "Geolocation",
-        "path": "attributes.field_geofield"
+        "header": "Latitude",
+        "path": "attributes.field_geofield.lat"
+      },
+      {
+        "type": "JSON",
+        "header": "Longitude",
+        "path": "attributes.field_geofield.lon"
       }
     ]
   },
   "mappings": [
+    {
+      "field": "yext/description",
+      "header": "Description",
+      "subfieldPath": []
+    },
     {
       "field": "yext/entityId",
       "header": "ID",
@@ -110,44 +115,58 @@
       "subfieldPath": []
     },
     {
-      "field": "yext/description",
-      "header": "Description",
-      "subfieldPath": []
-    },
-    {
-      "field": "yext/addressLine1",
+      "field": "yext/address",
       "header": "Address Line 1",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "line1"
+        }
+      ]
     },
     {
-      "field": "yext/addressLine2",
+      "field": "yext/address",
       "header": "Address Line 2",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "line2"
+        }
+      ]
     },
     {
-      "field": "yext/sublocality",
+      "field": "yext/address",
       "header": "Sublocality",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "sublocality"
+        }
+      ]
     },
     {
-      "field": "yext/locality",
+      "field": "yext/address",
       "header": "Locality",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "city"
+        }
+      ]
     },
     {
-      "field": "yext/region",
+      "field": "yext/address",
       "header": "Administative Area",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "region"
+        }
+      ]
     },
     {
-      "field": "yext/country",
+      "field": "yext/address",
       "header": "Country Code",
-      "subfieldPath": []
-    },
-    {
-      "field": "yext/language",
-      "header": "Language Code",
-      "subfieldPath": []
+      "subfieldPath": [
+        {
+          "name": "countryCode"
+        }
+      ]
     },
     {
       "field": "yext/mainPhone",
@@ -155,9 +174,22 @@
       "subfieldPath": []
     },
     {
-      "field": "yext/latlong",
-      "header": "Geolocation",
-      "subfieldPath": []
+      "field": "yext/displayCoordinate",
+      "header": "Latitude",
+      "subfieldPath": [
+        {
+          "name": "latitude"
+        }
+      ]
+    },
+    {
+      "field": "yext/displayCoordinate",
+      "header": "Longitude",
+      "subfieldPath": [
+        {
+          "name": "longitude"
+        }
+      ]
     }
   ],
   "scheduleConfig": {
